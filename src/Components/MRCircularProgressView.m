@@ -193,8 +193,16 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
 }
 
 - (void)updateLabel:(float)progress {
-    self.valueLabel.text = [self.numberFormatter stringFromNumber:@(progress)];
+    //self.valueLabel.text = [self.numberFormatter stringFromNumber:@(progress)];
+    //self.accessibilityValue = self.valueLabel.text;
+    
+    NSDateComponentsFormatter *formatter = [[NSDateComponentsFormatter alloc] init];
+    formatter.unitsStyle = NSDateComponentsFormatterUnitsStylePositional;
+    
+    NSTimeInterval val = [@(progress) doubleValue];
+    self.valueLabel.text = [formatter stringFromTimeInterval:val];
     self.accessibilityValue = self.valueLabel.text;
+
 }
 
 - (void)setProgress:(float)progress animated:(BOOL)animated {
