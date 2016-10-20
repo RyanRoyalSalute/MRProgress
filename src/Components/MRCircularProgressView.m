@@ -199,7 +199,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
     NSDateComponentsFormatter *formatter = [[NSDateComponentsFormatter alloc] init];
     formatter.unitsStyle = NSDateComponentsFormatterUnitsStylePositional;
     
-    NSTimeInterval val = [@(progress) doubleValue];
+    NSTimeInterval val = [@(progress*300) doubleValue];
     self.valueLabel.text = [formatter stringFromTimeInterval:val];
     self.accessibilityValue = self.valueLabel.text;
 
